@@ -1,6 +1,14 @@
-# Programaci-n-Visual
-Actividades 
-namespace Carrera_liebre_tortuga
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Vectores_SegundaParcial
 {
     public partial class Form1 : Form
     {
@@ -8,36 +16,47 @@ namespace Carrera_liebre_tortuga
         {
             InitializeComponent();
         }
-      
-        Liebre liebre = new Liebre(1);
-        Tortuga tortuga = new Tortuga(2);
-       
 
-        private void btnCarrera_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            do
-            {
-                liebre.Correr();
-                tortuga.Correr();
-                tablero.Text += liebre.Posicion + Environment.NewLine + tortuga.Posicion + Environment.NewLine;
 
-            }
-            while (liebre.Posicion <= 100 && tortuga.Posicion <= 100);
-            if (liebre.Posicion == 99 && tortuga.Posicion == 99)
-            {
-                tablero.Text = "Es un empate.";
-            }
+        }
+        miVector vector;
+        private void BtnCrear_Click(object sender, EventArgs e)
+        {
+            vector = new miVector(Convert.ToInt32(TxtTam.Text));
 
-            if (liebre.Posicion > 100)
-                tablero.Text = "La liebre " + "en la posición" + liebre.Posicion.ToString() + " es la ganadora";
-
-            else
-                tablero.Text = "La tortuga" + "en la posición" + tortuga.Posicion.ToString() + " es la ganadora";
+        }
+        
+        private void BtnLlenar_Click(object sender, EventArgs e)
+        {
+            vector.Llenar(Convert.ToInt32(TxtVal.Text));
 
 
         }
 
-        private void tablero_TextChanged(object sender, EventArgs e)
+        private void BtnMostrar_Click(object sender, EventArgs e)
         {
-            
+            TxtVec.Text = Convert.ToString(vector.Mostrar());
+
         }
+
+        private void BtnInvertir_Click(object sender, EventArgs e)
+        {
+            vector.GirarArriba();
+            TxtVec.Text = vector.Mostrar();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            vector.GirarAbajo();
+            TxtVec.Text = vector.Mostrar();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            vector.Invertir();
+            TxtVec.Text = vector.Mostrar();
+        }
+    }
+}
