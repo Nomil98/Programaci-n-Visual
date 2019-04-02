@@ -20,10 +20,10 @@ namespace Vectores_SegundaParcial
         {
             for(int i =0; i<_vec.Length; i++)
             {
-                _vec[i] = inicial++;
+            
+            _vec[i] = inicial++;
             }
             return inicial;
-        }
 
         public string Mostrar()
         {
